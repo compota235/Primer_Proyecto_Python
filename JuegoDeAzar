@@ -1,0 +1,50 @@
+import random
+Dificultad = input("Que dificultad quiere para el juego, facil, normal o dificil :")
+def dificultad(Dificultad):
+    Dificultad = Dificultad.lower()
+    if Dificultad == "facil":
+        numero = random.randint(0, 6)
+        
+    elif Dificultad == "normal":
+        numero = random.randint(0, 11)
+        
+    elif Dificultad == "dificil":
+        numero = random.randint(0 , 101)
+        
+    else:
+        return("Elije una opcion valida !!")
+    
+    if Dificultad == "facil":
+        rango  = " entre 0 y 5 "
+    elif Dificultad == "normal":
+        rango = " entre 0 y 10 "
+    elif Dificultad == "dificil":
+        rango =  " entre 0 y 100"
+
+    return numero , rango
+    
+def juego(numero,y):
+        if numero > y:
+            print("---------Muy puqueño---------")
+        elif numero < y:
+            print("---------Muy grande---------")
+        
+
+numero , rango =  dificultad(Dificultad)
+
+if numero == "Elije una opcion valida !!":
+    print(dificultad(Dificultad))
+else:
+    vidas = 3
+    while vidas > 0:
+        y = int(input(f"Escribe un numero {rango}, solo tienes 3 intentos = "))
+        vidas -= 1
+        if vidas > 0:
+            print(f"Te quedan {vidas} vidas")
+        juego(numero, y)
+        if numero == y:
+            print("ganaste!!")
+            break
+    else:
+        print(f"GAME OVER!! \n El numero ganador era {numero}")
+ 
